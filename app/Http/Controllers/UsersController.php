@@ -30,12 +30,6 @@ class UsersController extends Controller
         return response()->json($user);
     }
 
-    public function store(UserRequest $request): JsonResponse
-    {
-        $user = $this->userService->createUser($request->validated());
-        return response()->json($user, 201);
-    }
-
     public function update(UserRequest $request, int $id): JsonResponse
     {
         $user = $this->userService->updateUser($id, $request->validated());

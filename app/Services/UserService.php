@@ -17,11 +17,6 @@ class UserService
         return User::find($id);
     }
 
-    public function createUser(array $data): User
-    {
-        return User::create($data);
-    }
-
     public function updateUser(int $id, array $data)
     {
         $user = User::find($id);
