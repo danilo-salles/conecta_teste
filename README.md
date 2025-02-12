@@ -43,7 +43,6 @@ JWT para autenticação 🔐
 
 Arquitetura baseada em Services, Models e Controllers 📂
 
-Banco de dados padrão do Laravel para CRUD 🗄
 
 📢 Observações
 
