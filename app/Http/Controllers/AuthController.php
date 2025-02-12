@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @OA\Tag(name="Auth", description="Authentication related endpoints")
@@ -52,12 +53,12 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => $request->password,
         ]);
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(['token' => $token], 201);
+        return response()->json(['message' => 'Success create user'], 201);
     }
 
     /**
@@ -88,15 +89,19 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
 
-        if (!$token = Auth::attempt($credentials)) {
+        $email = $request->email;
+        $password = $request->password;
+        $user = User::where('email', $email)->first();
+
+        if (!$user || !Hash::check($password, $user->password)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
+        $token = JWTAuth::fromUser($user);
+
         return response()->json(['token' => $token]);
     }
-
     /**
      * @OA\Get(
      *     path="/api/me",
