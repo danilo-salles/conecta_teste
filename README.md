@@ -48,7 +48,7 @@ Caso queira acessar a documentação das APIs, basta ir até:
 - **MySQL** 🗄
 - **JWT para autenticação** 🔐
 - **Arquitetura baseada em Services, Models e Controllers** 📂
-- 
+
 ---
 
 ## 📢 Observações
