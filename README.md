@@ -46,6 +46,3 @@ Caso queira acessar a documentação das APIs, basta ir até:
 
 ## 📢 Observações
 Este projeto utiliza **MySQL** como banco de dados e a tabela padrão do Laravel para gerenciar usuários e operações CRUD. A autenticação é feita via **JWT**, garantindo segurança e flexibilidade no controle de acessos.
-
-Caso tenha dúvidas ou precise de suporte, sinta-se à vontade para contribuir ou abrir uma issue! 😃
-
